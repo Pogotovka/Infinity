@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="androidx.core.text.StringKt" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horizontal_guideline_top"
+                style="@style/AppTheme.HorizontalGuidelineTop" />
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/vertical_guideline_start"
+                style="@style/AppTheme.VerticalGuidelineStart" />
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/vertical_guideline_end"
+                style="@style/AppTheme.VerticalGuidelineEnd" />
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horizontal_guideline_bottom"
+                style="@style/AppTheme.HorizontalGuidelineBottom" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/linear_progress_indicator"
+                android:layout_width="0dp"
+                app:layout_constraintTop_toBottomOf="@+id/horizontal_guideline_top"
+                app:layout_constraintStart_toStartOf="@+id/vertical_guideline_start"
+                app:layout_constraintEnd_toEndOf="@+id/vertical_guideline_end"
+                android:layout_height="wrap_content" />
+
+        <androidx.cardview.widget.CardView
+                app:cardCornerRadius="10dp"
+                app:cardUseCompatPadding="true"
+                android:layout_marginTop="@dimen/common_margin"
+                app:layout_constraintTop_toBottomOf="@+id/linear_progress_indicator"
+                app:layout_constraintStart_toStartOf="@+id/vertical_guideline_start"
+                app:layout_constraintEnd_toEndOf="@+id/vertical_guideline_end"
+                android:layout_width="0dp"
+                android:layout_height="220dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/post_image"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true" />
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout"
+                android:id="@+id/wrapper_title"
+                app:layout_constraintStart_toStartOf="@+id/vertical_guideline_start"
+                app:layout_constraintEnd_toEndOf="@+id/vertical_guideline_end"
+                android:layout_marginTop="@dimen/common_margin">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_title"
+                    android:layout_width="match_parent"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/title" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                style="@style/AppTheme.TextInputLayout"
+                android:id="@+id/wrapper_description"
+                app:layout_constraintTop_toBottomOf="@+id/wrapper_title"
+                app:layout_constraintStart_toStartOf="@+id/vertical_guideline_start"
+                app:layout_constraintEnd_toEndOf="@+id/vertical_guideline_end"
+                android:layout_marginTop="@dimen/common_margin">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:lines="3"
+                    android:id="@+id/et_description"
+                    android:maxLines="5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/description" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/sendPost"
+                android:layout_width="0dp"
+                android:text="@string/post"
+                app:layout_constraintBottom_toBottomOf="@id/horizontal_guideline_bottom"
+                app:layout_constraintStart_toStartOf="@+id/vertical_guideline_start"
+                app:layout_constraintEnd_toEndOf="@+id/vertical_guideline_end"
+                android:layout_height="50dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

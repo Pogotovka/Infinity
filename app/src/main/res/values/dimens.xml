@@ -1,0 +1,10 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="common_margin_small">10dp</dimen>
+    <dimen name="common_margin">16dp</dimen>
+    <dimen name="marginSmall">4dp</dimen>
+    <dimen name="galleryItemRoundSize">5dp</dimen>
+    <dimen name="common_padding">16dp</dimen>
+    <dimen name="galleryAlbumThumbSize">48dp</dimen>
+
+</resources>

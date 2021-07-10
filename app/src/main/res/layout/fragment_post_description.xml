@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.infinity.my.ui.newpost.fragmentpostdescription.PostDescriptionViewModel" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <include layout="@layout/layout_app_bar_collapsing" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/common_margin"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/horizontal_guideline_top"
+                    style="@style/AppTheme.HorizontalGuidelineTop" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/vertical_guideline_start"
+                    style="@style/AppTheme.VerticalGuidelineStart" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/vertical_guideline_end"
+                    style="@style/AppTheme.VerticalGuidelineEnd" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/horizontal_guideline_bottom"
+                    style="@style/AppTheme.HorizontalGuidelineBottom" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/wrapper_image"
+                    app:cardCornerRadius="20dp"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="@dimen/common_margin"
+                    app:layout_constraintTop_toBottomOf="@+id/horizontal_guideline_top"
+                    app:layout_constraintStart_toStartOf="@id/vertical_guideline_start"
+                    app:layout_constraintEnd_toEndOf="@id/vertical_guideline_end"
+                    android:layout_height="260dp"
+                    android:elevation="8dp"
+                    app:cardElevation="10dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:imageFromUrl="@{viewModel.formBinding.imageUri}"
+                        tools:src="@drawable/ic_no_network"
+                        android:scaleType="centerCrop"
+                        android:adjustViewBounds="true" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppTheme.TextInputLayout"
+                    android:id="@+id/wrapper_title"
+                    app:layout_constraintTop_toBottomOf="@+id/wrapper_image"
+                    app:layout_constraintStart_toStartOf="@+id/vertical_guideline_start"
+                    app:layout_constraintEnd_toEndOf="@+id/vertical_guideline_end"
+                    android:layout_marginTop="@dimen/common_margin">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_title"
+                        android:layout_width="match_parent"
+                        android:lines="1"
+                        android:text="@={viewModel.formBinding.titlePost}"
+                        android:maxLines="1"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/title" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/AppTheme.TextInputLayout"
+                    android:id="@+id/wrapper_description"
+                    app:layout_constraintTop_toBottomOf="@+id/wrapper_title"
+                    app:layout_constraintStart_toStartOf="@+id/vertical_guideline_start"
+                    app:layout_constraintEnd_toEndOf="@+id/vertical_guideline_end"
+                    android:layout_marginTop="@dimen/common_margin">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_description"
+                        android:layout_width="match_parent"
+                        android:lines="5"
+                        android:text="@={viewModel.formBinding.descriptionPost}"
+                        android:maxLines="5"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/description" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.infinity.my.ui.customui.RadiusButtonView
+                    android:id="@+id/publish_post"
+                    app:corner_radius="12dp"
+                    android:text="Publish post"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/common_padding"
+                    android:layout_marginTop="@dimen/common_margin"
+                    app:bg_color="@color/colorPrimary"
+                    app:layout_constraintTop_toBottomOf="@id/wrapper_description"
+                    app:layout_constraintStart_toStartOf="@id/vertical_guideline_start"
+                    app:layout_constraintEnd_toEndOf="@id/vertical_guideline_end"
+                    android:gravity="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp"
+                    android:layout_gravity="end" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

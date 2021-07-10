@@ -1,0 +1,49 @@
+ <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/new_post_nav_graph"
+    app:startDestination="@id/fragment_choose_image">
+
+    <fragment
+        android:id="@+id/fragment_choose_image"
+        android:name="com.infinity.my.ui.newpost.fragmentchooseimage.FragmentChooseImage"
+        android:label="FragmentChooseImage"
+        tools:layout="@layout/fragment_choose_image">
+        <action
+            android:id="@+id/action_fragment_choose_image_to_fragment_take_picture"
+            app:destination="@id/fragment_take_picture" />
+
+        <action
+            android:id="@+id/action_fragment_choose_image_to_fragment_add_description"
+            app:destination="@id/fragment_add_description">
+
+            <argument
+                app:nullable="true"
+                android:name="imageUrl"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_add_description"
+        android:name="com.infinity.my.ui.newpost.fragmentpostdescription.FragmentPostDescription"
+        android:label="FragmentPostDescription"
+        tools:layout="@layout/fragment_post_description">
+
+        <argument
+            app:nullable="true"
+            android:name="imageUrl"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_take_picture"
+        android:name="com.infinity.my.ui.newpost.fragmenttakepicture.FragmentTakePicture"
+        android:label="FragmentFragmentTakePictureAddPost"
+        tools:layout="@layout/fragment_take_picture">
+        <action
+            android:id="@+id/action_fragment_take_picture_to_fragment_add_description"
+            app:destination="@id/fragment_add_description" />
+    </fragment>
+
+</navigation>
