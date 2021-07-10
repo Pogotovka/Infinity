@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="RadiusButtonView">
+        <attr name="corner_radius" format="dimension"/>
+        <attr name="bg_color" format="color"/>
+        <attr name="drawable_center" format="integer"/>
+        <attr name="drawable_tint" format="color"/>
+    </declare-styleable>
+
+</resources>

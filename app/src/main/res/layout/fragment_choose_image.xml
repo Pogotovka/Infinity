@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+                name="folder"
+                type="com.infinity.my.data.model.dto.GalleryFolder" />
+
+        <variable
+                name="viewModel"
+                type="com.infinity.my.ui.newpost.fragmentchooseimage.ChooseImageViewModel" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/horizontal_guideline_top"
+                    style="@style/AppTheme.HorizontalGuidelineTop" />
+
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/vertical_guideline_start"
+                    style="@style/AppTheme.VerticalGuidelineStart" />
+
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/vertical_guideline_end"
+                    style="@style/AppTheme.VerticalGuidelineEnd" />
+
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/horizontal_guideline_bottom"
+                    style="@style/AppTheme.HorizontalGuidelineBottom" />
+
+            <androidx.constraintlayout.motion.widget.MotionLayout
+                    android:id="@+id/motion_layout"
+                    app:layoutDescription="@xml/fragment_choose_image_scene"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <FrameLayout
+                        android:id="@+id/image_frame"
+                        android:layout_width="0dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_height="335dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/post_image"
+                            app:imageFromUrl="@{viewModel.formBinding.imageUri}"
+                            android:layout_width="match_parent"
+                            tools:src="@drawable/ic_gallery_selection"
+                            android:visibility="@{TextUtils.isEmpty(viewModel.formBinding.imageUri) ? View.GONE : View.VISIBLE, default = gone}"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:adjustViewBounds="true" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/empty_image"
+                            android:gravity="center"
+                            android:text="Please choose photo"
+                            android:textSize="22sp"
+                            android:visibility="@{TextUtils.isEmpty(viewModel.formBinding.imageUri) ? View.VISIBLE : View.GONE,  default = visible}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                </FrameLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/wrapper_recycler_view"
+                        app:cardCornerRadius="10dp"
+                        android:layout_marginTop="-30dp"
+                        app:cardElevation="10dp"
+                        app:contentPaddingTop="10dp"
+                        app:layout_constraintTop_toBottomOf="@id/image_frame"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp">
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <com.infinity.my.ui.customui.RadiusButtonView
+                                android:id="@+id/take_picture"
+                                app:corner_radius="80dp"
+                                android:text="Take picture"
+                                android:layout_gravity="end"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="30dp"
+                                app:bg_color="@color/colorPrimary"
+                                android:layout_marginEnd="5dp"
+                                android:gravity="center"
+                                android:layout_marginStart="@dimen/common_margin_small"
+                                android:onClick="@{viewModel::onClick}"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="12sp" />
+
+                        <com.infinity.my.ui.customui.RadiusButtonView
+                                android:id="@+id/select_folder"
+                                app:corner_radius="80dp"
+                                android:layout_gravity="end"
+                                android:layout_marginStart="5dp"
+                                android:layout_weight="1"
+                                android:text="@{folder.folderName}"
+                                android:ellipsize="end"
+                                android:maxEms="10"
+                                android:singleLine="true"
+                                android:layout_width="0dp"
+                                android:layout_height="30dp"
+                                android:layout_marginEnd="@dimen/common_margin_small"
+                                app:bg_color="@color/colorPrimary"
+                                android:gravity="center"
+                                android:onClick="@{viewModel::onClick}"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/gallery_rv"
+                            tools:listitem="@layout/list_item_gallery"
+                            android:layout_marginTop="45dp"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.motion.widget.MotionLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    app:srcCompat="@drawable/ic_arrow_back"
+                    android:onClick="@{viewModel::onClick}"
+                    android:id="@+id/back"
+                    android:padding="@dimen/common_padding"
+                    app:layout_constraintTop_toTopOf="@id/horizontal_guideline_top"
+                    app:layout_constraintStart_toStartOf="@id/vertical_guideline_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            <com.infinity.my.ui.customui.RadiusButtonView
+                    android:id="@+id/choose"
+                    app:corner_radius="12dp"
+                    android:text="Choose"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/common_padding"
+                    app:bg_color="@color/colorPrimary"
+                    android:visibility="@{TextUtils.isEmpty(viewModel.formBinding.imageUri) ? View.GONE : View.VISIBLE,  default = visible}"
+                    app:layout_constraintBottom_toBottomOf="@id/horizontal_guideline_bottom"
+                    app:layout_constraintStart_toStartOf="@id/vertical_guideline_start"
+                    app:layout_constraintEnd_toEndOf="@id/vertical_guideline_end"
+                    android:gravity="center"
+                    android:onClick="@{viewModel::onClick}"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp"
+                    android:layout_gravity="end" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+                android:id="@+id/bottom_sheet_layout"
+                layout="@layout/bottom_sheet_gallery_folders" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

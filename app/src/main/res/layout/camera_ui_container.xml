@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isCameraPermissionAccess"
+            type="androidx.databinding.ObservableBoolean" />
+
+        <variable
+            name="isCaptureEnabled"
+            type="androidx.databinding.ObservableBoolean" />
+
+        <variable
+            name="viewModel"
+            type="com.infinity.my.ui.newpost.fragmenttakepicture.TakePictureViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guideline_top"
+            style="@style/AppTheme.HorizontalGuidelineTop" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vertical_guideline_start"
+            style="@style/AppTheme.VerticalGuidelineStart" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vertical_guideline_end"
+            style="@style/AppTheme.VerticalGuidelineEnd" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guideline_bottom"
+            style="@style/AppTheme.HorizontalGuidelineBottom" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            app:srcCompat="@drawable/ic_arrow_back"
+            android:id="@+id/back"
+            android:padding="@dimen/common_padding"
+            app:layout_constraintTop_toTopOf="@id/horizontal_guideline_top"
+            app:layout_constraintStart_toStartOf="@id/vertical_guideline_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/camera_capture"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:background="@drawable/take_picture_pressed"
+            android:visibility="@{isCaptureEnabled ? View.VISIBLE :View.GONE}"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintStart_toStartOf="@id/vertical_guideline_start"
+            app:layout_constraintEnd_toEndOf="@id/vertical_guideline_end"
+            app:layout_constraintBottom_toBottomOf="@id/horizontal_guideline_bottom" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/switch_camera"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:visibility="@{isCameraPermissionAccess ? View.VISIBLE :View.GONE}"
+            android:padding="@dimen/common_padding"
+            app:srcCompat="@drawable/ic_switch_camera"
+            app:layout_constraintTop_toTopOf="@id/horizontal_guideline_top"
+            app:layout_constraintEnd_toEndOf="@id/vertical_guideline_end" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_permission_is_denied"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:text="@string/cannot_take_photo_without_permission"
+            app:layout_constraintStart_toStartOf="@id/vertical_guideline_start"
+            app:layout_constraintEnd_toEndOf="@id/vertical_guideline_end"
+            app:layout_constraintBottom_toBottomOf="@id/horizontal_guideline_bottom"
+            app:layout_constraintTop_toBottomOf="@id/horizontal_guideline_top"
+            android:visibility="@{isCameraPermissionAccess ? View.GONE :View.VISIBLE}"
+            android:layout_height="wrap_content"
+            tools:visibility="visible" />
+
+        <com.infinity.my.ui.customui.RadiusButtonView
+            android:id="@+id/try_to_access_camera_permission"
+            app:corner_radius="12dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/common_padding"
+            app:bg_color="@color/colorPrimary"
+            android:visibility="@{isCameraPermissionAccess ? View.GONE :View.VISIBLE}"
+            android:layout_marginTop="@dimen/common_margin"
+            android:text="@string/allow_permission_to_access_the_camera"
+            app:layout_constraintStart_toStartOf="@id/vertical_guideline_start"
+            app:layout_constraintEnd_toEndOf="@id/vertical_guideline_end"
+            app:layout_constraintTop_toBottomOf="@id/tv_permission_is_denied"
+            android:gravity="center"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:layout_gravity="end" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

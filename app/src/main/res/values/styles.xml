@@ -1,0 +1,65 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:forceDarkAllowed">true</item>
+    </style>
+
+    <style name="AppTheme.Fullscreen" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!--    Base Guideline Styles-->
+    <style name="AppTheme.HorizontalGuidelineTop" parent="AppTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintGuide_begin">@dimen/common_margin</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="AppTheme.VerticalGuidelineStart" parent="AppTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintGuide_begin">@dimen/common_margin</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="AppTheme.VerticalGuidelineEnd" parent="AppTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintGuide_end">@dimen/common_margin</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="AppTheme.HorizontalGuidelineBottom" parent="AppTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintGuide_end">@dimen/common_margin</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="AppTheme.TextInputLayout" parent="Widget.Design.TextInputLayout">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="errorEnabled">false</item>
+    </style>
+
+
+    <style name="AppCompat.ToolBarStyleCollapsed" parent="Widget.AppCompat.Toolbar">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppCompat.ToolBarStyleExpanded" parent="Widget.AppCompat.Toolbar">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="AppCompat.ToolbarThemeDelivery" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">@color/colorAccent</item>
+    </style>
+
+</resources>
