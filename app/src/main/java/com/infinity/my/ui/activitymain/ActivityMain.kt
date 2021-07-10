@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.infinity.my.R
 import com.infinity.my.databinding.ActivityMainBinding
 import com.infinity.my.ui.base.BaseActivity
-import com.infinity.my.ui.base.navigator.goToActivity
-import com.infinity.my.ui.newpost.ActivityNewPost
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ActivityMain : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
