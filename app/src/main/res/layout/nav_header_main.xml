@@ -1,48 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
-        <import type="android.view.View" />
-
-        <variable
-            name="media"
-            type="com.infinity.my.data.model.dto.MediaItem" />
-
-        <variable
-            name="isSelected"
-            type="boolean" />
-
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="96dp"
-        android:padding="3dp"
-        android:layout_height="96dp">
+    <LinearLayout
+        android:id="@+id/nav_header"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@color/colorAccent"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgThumb"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/ic_no_thumb_bg"
-            android:scaleType="centerCrop"
-            app:imageFromUrlGallery="@{media.thumb}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/nav_header_imageView"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@mipmap/ic_launcher" />
 
-        <View
-            android:id="@+id/pnlSelection"
-            android:layout_width="0dp"
-            android:visibility="@{isSelected ? View.VISIBLE:  View.GONE, default = gone}"
-            android:layout_height="0dp"
-            android:background="@drawable/ic_gallery_selection"
-            app:layout_constraintBottom_toBottomOf="@id/imgThumb"
-            app:layout_constraintEnd_toEndOf="@id/imgThumb"
-            app:layout_constraintStart_toStartOf="@id/imgThumb"
-            app:layout_constraintTop_toTopOf="@id/imgThumb" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/nav_header_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:text="Chike"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    </LinearLayout>
 </layout>

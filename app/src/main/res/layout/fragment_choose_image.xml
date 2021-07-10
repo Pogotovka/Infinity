@@ -70,7 +70,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/empty_image"
                             android:gravity="center"
-                            android:text="Please choose photo"
+                            android:text="@string/fragment_shoose_image_please_choose_photo"
                             android:textSize="22sp"
                             android:visibility="@{TextUtils.isEmpty(viewModel.formBinding.imageUri) ? View.VISIBLE : View.GONE,  default = visible}"
                             android:layout_width="match_parent"
@@ -97,7 +97,7 @@
                         <com.infinity.my.ui.customui.RadiusButtonView
                                 android:id="@+id/take_picture"
                                 app:corner_radius="80dp"
-                                android:text="Take picture"
+                                android:text="@string/take_picture"
                                 android:layout_gravity="end"
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
@@ -157,7 +157,7 @@
             <com.infinity.my.ui.customui.RadiusButtonView
                     android:id="@+id/choose"
                     app:corner_radius="12dp"
-                    android:text="Choose"
+                    android:text="@string/title_choose"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/common_padding"

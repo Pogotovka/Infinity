@@ -61,6 +61,7 @@
                 style="@style/AppTheme.TextInputLayout"
                 android:id="@+id/wrapper_title"
                 app:layout_constraintStart_toStartOf="@+id/vertical_guideline_start"
+                app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_top"
                 app:layout_constraintEnd_toEndOf="@+id/vertical_guideline_end"
                 android:layout_marginTop="@dimen/common_margin">
 

@@ -49,7 +49,7 @@
                         android:textSize="16sp"
                         android:textColor="@color/colorAccent"
                         android:layout_margin="@dimen/common_margin"
-                        android:text="Select folder"
+                        android:text="@string/bottom_sheet_select_folder"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
